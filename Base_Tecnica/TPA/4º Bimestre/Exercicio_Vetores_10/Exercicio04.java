@@ -1,24 +1,23 @@
 public class Exercicio04 {
-    public static void main(String[] args) {
 
-        int[] vetorA = new int[11];
+  public static void main(String[] args) {
 
-        int resultPotencia = 0;
+    double[] vetorA = new double[11];
 
-        for (int i = 0; i <= (vetorA.length - 1); i++) {
+    double resultPotencia = 2;
 
-            for (int c = 1; c <= i; c++) {
-                resultPotencia = resultPotencia * 2;
-            }
-
-            vetorA[i] = resultPotencia;
-
-            resultPotencia = 1;
-        }
-
-        for (int atual : vetorA) {
-            System.out.println(atual);
-        }
+    for (int i = 0; i <= (vetorA.length - 1); i++) {
+      if(i==0){
+        resultPotencia = Math.pow(resultPotencia, 2);
+      } else{
+        resultPotencia = Math.pow(resultPotencia,vetorA[i-1]);
+      }
+      
+      vetorA[i] = resultPotencia;
     }
-}
 
+    for (double atual : vetorA) {
+      System.out.println(atual);
+    }
+  }
+}

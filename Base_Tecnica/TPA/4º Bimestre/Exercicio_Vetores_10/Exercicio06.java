@@ -1,38 +1,69 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-public class Exercicio06 {
+import java.util.Random;
+public class Exercicio006 {
 
-    public static void main(String[] args) {
-        Scanner ler = new Scanner(System.in);
+  public static void main(String[] args) {
+    int[] vetorA = new int[20];
+    int[] vetorB = new int[20];
+    
+    Random random = new Random();
+    
+    for(int i=0; i<=(vetorA.length - 1); i++){
+      vetorA[i] = random.nextInt() % 50;
+      vetorB[i] = random.nextInt() % 50;
+    }
+    
+    int contadorA = 0;
+    int contadorB = 0;
+    
+    while(true){
+      int numA = random.nextInt() % 50;
+      int numB = random.nextInt() % 50;
+      
+      if((numA > 0 && numA <= 10) && contadorA < vetorA.length){
+        vetorA[contadorA] = numA;
+        contadorA++;
+      }
+      if((numB > 0 && numB <= 10) && contadorB < vetorB.length){
+        vetorB[contadorB] = numB;
+        contadorB++;
+      }
+      
+      if(contadorA== vetorA.length && contadorB==vetorB.length){
+        break;
+      }
+    }
+    
+    
 
-        final int TAMANHO_ARRAY = 5;
+        int tamanhoC = (vetorA.length < vetorB.length) ? vetorA.length : vetorB.length;
+        int[] vetorC = new int[tamanhoC];
+        int contadorC = 0;
 
-        // LEITURA DOS 2 VETORES
-        List<Integer> vetorA = new ArrayList<>();
-        List<Integer> vetorB = new ArrayList<>();
-        List<Integer> vetorC = new ArrayList<>();
-
-
-        for (int i = 0; i <= (TAMANHO_ARRAY - 1); i++) {
-            System.out.printf("Informe o %dº numero do vetor A: ", i + 1);
-            vetorA.add(ler.nextInt());
-
-            System.out.printf("Informe o %dº numero do vetor B: ", i + 1);
-            vetorB.add(ler.nextInt());
-        }
-
-        for(Integer valor : vetorA){
-            if(vetorB.contains(valor) && vetorC.contains(valor) == false){
-                vetorC.add(valor);
+        for (int i = 0; i < vetorA.length; i++) {
+            for (int j = 0; j < vetorB.length; j++) {
+                if (vetorA[i] == vetorB[j]) {
+                    vetorC[contadorC++] = vetorA[i];
+                    break;
+                }
             }
         }
 
-        System.out.println("Os valores que possuem intersecção são os: ");
-        for(Integer valor : vetorC){
-            System.out.print(valor);
+        System.out.print("Vetor A: [");
+        for(int i=0; i<=vetorA.length -1; i++){
+          System.out.print(i==vetorA.length-1 ? vetorA[i]: vetorA[i]+ ", ");
         }
+        System.out.println("]");
+        
+        System.out.print("Vetor B: [");
+        for(int i=0; i<=vetorB.length -1; i++){
+          System.out.print(i==vetorB.length-1 ? vetorB[i]: vetorB[i]+ ", ");
+        }
+        System.out.println("]");
+        
+        System.out.print("Vetor C (Interseção): ");
+        for (int k = 0; k < contadorC; k++) {
+            System.out.print(vetorC[k] + " ");
+        }
+  }
 
-        ler.close();
-    }
 }
