@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-public class Exercicio07 {
+public class Exercicio06 {
+
     public static void main(String[] args) {
         Scanner ler = new Scanner(System.in);
 
@@ -14,27 +15,24 @@ public class Exercicio07 {
 
 
         for (int i = 0; i <= (TAMANHO_ARRAY - 1); i++) {
-            System.out.printf("Digite o %dº numero do vetor A: ", i + 1);
+            System.out.printf("Informe o %dº numero do vetor A: ", i + 1);
             vetorA.add(ler.nextInt());
 
-            System.out.printf("Digite o %dº numero do vetor B: ", i + 1);
+            System.out.printf("Informe o %dº numero do vetor B: ", i + 1);
             vetorB.add(ler.nextInt());
         }
 
         for(Integer valor : vetorA){
-            if(vetorB.contains(valor) == false && vetorC.contains(valor) == false){
+            if(vetorB.contains(valor) && vetorC.contains(valor) == false){
                 vetorC.add(valor);
             }
         }
 
-        System.out.println("Os valores que tem intersecção são: ");
-        int syzeVectC = (vetorC.size() - 1);
+        System.out.println("Os valores que possuem intersecção são os: ");
         for(Integer valor : vetorC){
-
-            System.out.print(valor == vetorC.get(syzeVectC) ? valor : valor + ", ");
+            System.out.print(valor);
         }
 
         ler.close();
     }
 }
-
